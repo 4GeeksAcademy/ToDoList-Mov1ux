@@ -16,19 +16,28 @@ const Home = () => {
 					value={inputValue}
 					onChange={(e) => 
 						 setInputValue(e.target.value)}
-					onKeyDown={(e)=> e.key == "Enter" ? setTareas (tareas.concat(inputValue)): null}
-					placeholder="Nuevas tareas" />
+					//onKeyDown={(e)=> e.key == "Enter" ? setTareas (tareas.concat(inputValue)): null}
+					onKeyDown={(e) =>
+						e.key === "Enter" && inputValue !== ""
+						  ? (setTareas(tareas.concat(inputValue)), setInputValue(""))
+						  : null
+					  }
+					  placeholder="Nuevas tareas"
+					/>
 					<button onClick={() =>{setTareas("")}}><i className="fa-solid fa-xmark"></i></button>
 					
 				</li>
-				{tareas.map((t)=>(
+				{tareas.map((item,index)=>(
 				<li className="mt-1">
-					{t} <i className="fa-solid fa-xmark"></i>
+					{item} <i className="fa-solid fa-xmark"onClick={()=> 
+						setTareas(
+							tareas.filter(
+								(t,newarray)=>
+									index != newarray))}></i>
 				</li>))}
-
 			</ul>
 			<div className="container  border-top mb-none">
-				<p>24 tareas</p>
+				{tareas.length === 0 ?(<p>Añadir tareas</p>):(`${tareas.length} Tarea por finalizar`)}
 			</div>
 		</div>
 	);
