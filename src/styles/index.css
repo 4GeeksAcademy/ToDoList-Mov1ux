@@ -10,3 +10,20 @@
     import 'relative/path/to/stylesheet.scss';
 
 */
+
+ul li{
+    border: 1px solid black;
+    padding: 5px;
+    list-style: none;
+    
+}
+
+
+h1 {
+    text-align: center;
+}
+input{
+    width: 96%;
+    border: none;
+    padding: 5px;
+}
